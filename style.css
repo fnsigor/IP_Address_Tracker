@@ -1,0 +1,140 @@
+/* 
+- Mobile: 375px
+- Desktop: 1440px */
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    font-style: normal;
+}
+
+:root {
+    font-size: 62.5%;
+
+    --Very-Dark-Gray: hsl(0, 0%, 17%);
+    --Dark-Gray: hsl(0, 0%, 59%);
+}
+
+body {
+    font-family: 'Rubik', sans-serif;
+    /* font-size: 1.8rem;  */
+
+    background: linear-gradient(45deg, #443e99, #6186f2) no-repeat;
+
+    min-height: 100vh;
+
+    padding-top: 30vh;
+}
+
+
+.absolute-container{
+    position: absolute;
+    z-index: 999;
+    left: 50%;
+    transform: translateX(-50%);
+
+    padding-top: 1.5rem;
+
+    top: 0vh;
+    
+} 
+
+
+h1 {
+    color: #fff;
+    font-weight: 500;
+    font-size: 2.3;
+    text-align: center;
+    
+    margin-bottom: 1.5rem;
+}
+
+input {
+    color: var(--Very-Dark-Gray);
+    font-size: 1.8rem;
+    line-height: 2rem;
+    outline: none;
+
+    border: none;
+    border-bottom-left-radius: .5rem;
+    border-top-left-radius: .5rem;
+
+    padding: .8rem;
+    min-width: 2.4rem;
+    width: 30rem;
+}
+
+
+button {
+    width: 3.8rem;
+    height: 3.8rem;
+
+    border: none;
+
+    background-color: #000;
+
+    border-bottom-right-radius: .5rem;
+    border-top-right-radius: .5rem;
+
+    position: relative;
+
+}
+
+button::before {
+    content: '';
+
+    position: absolute;
+    top: 50%;
+    right: 50%;
+
+    background-color: #fff;
+
+    transform: translate(50%, -50%);
+
+    width: 1.4rem;
+    height: 1.4rem;
+
+    transform-origin: bottom left;
+    clip-path: polygon(53% 0, 75% 50%, 53% 100%, 33% 100%, 55% 50%, 33% 0);
+}
+
+
+form {
+    margin-inline: auto;
+    display: flex;
+    justify-content: center;
+
+    margin-bottom: 2rem;
+}
+
+.infos-div{
+    background-color: #FFF;
+
+    border-radius: .5rem;  
+
+    width: 80%;
+    margin-inline: auto;
+
+}
+
+.infos-block{
+    text-align: center;
+    padding-block: 1rem;
+}
+
+.info-title{
+    margin-bottom: .3rem;
+ 
+    font-size: 1.4rem;
+    color: var(--Dark-Gray);
+}
+
+.api-result{
+    color: var(--Very-Dark-Gray);
+    font-weight: 400;
+    font-size: 1.9rem;
+}
+

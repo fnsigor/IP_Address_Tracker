@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- Leaflet lib  -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+        integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+        integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+    <!-- Leaflet lib  -->
+
+    <script src="script.js"></script>
+    <title>IP Address Tracker</title>
+</head>
+
+<body>
+    <div class="absolute-container">
+        <h1>IP Address Tracker</h1>
+
+        <form>
+            <input type="text" placeholder="Search for any IP address or domain" min="5">
+            <button type="button"></button>
+        </form>
+
+        <ul class="infos-div">
+            <li class="infos-block">
+                <h6 class="info-title">IP ADDRESS</h6>
+                <address class="api-result" id="ip">&nbsp;</address>
+            </li>
+
+            <li class="infos-block">
+                <h6 class="info-title">LOCATION</h6>
+                <address class="api-result" id="location">&nbsp;</address>
+            </li>
+
+            <li class="infos-block">
+                <h6 class="info-title">TIMEZONE</h6>
+                <address class="api-result" id="timezone">&nbsp;</address>
+            </li>
+
+            <li class="infos-block">
+                <h6 class="info-title">ISP</h6>
+                <address class="api-result" id="isp">&nbsp;</address>
+            </li>
+        </ul>
+    </div>
+
+    <div id="map" Style="width: 100%; height: 70vh; margin: 0 auto;"></div>
+
+
+</body>
+
+</html>
