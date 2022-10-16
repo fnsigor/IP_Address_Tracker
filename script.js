@@ -1,5 +1,6 @@
 let map
 let marker
+let popup
 
 window.onload = function () {
 
@@ -26,7 +27,7 @@ window.onload = function () {
     })
 
 
-    function putLocationOnMap(latitude, longitude) {
+    function putLocationOnMap(latitude, longitude, location = 'default') {
 
         //verification needed to update the map according to the new input information
         if (map) {
@@ -48,6 +49,8 @@ window.onload = function () {
 
         //creates the marker and places it at the given coordinates
         marker = L.marker([latitude, longitude]).addTo(map);
+
+        marker.bindPopup(location).openPopup();
     }
 
 
@@ -57,7 +60,7 @@ window.onload = function () {
             const response = await axios.get(requestURL)
 
             setResponseInDom(response.data)
-            putLocationOnMap(response.data.location.lat, response.data.location.lng)
+            putLocationOnMap(response.data.location.lat, response.data.location.lng, `${response.data.location.city}, ${response.data.location.region}`)
 
         } catch (error) {
 
@@ -74,7 +77,7 @@ window.onload = function () {
             const response = await axios.get(requestURL)
 
             setResponseInDom(response.data)
-            putLocationOnMap(response.data.location.lat, response.data.location.lng)
+            putLocationOnMap(response.data.location.lat, response.data.location.lng, `${response.data.location.city}, ${response.data.location.region}`)
 
         } catch (error) {
 
@@ -86,9 +89,9 @@ window.onload = function () {
 
     function setResponseInDom(data) {
         document.getElementById("ip").textContent = data.ip;
-        document.getElementById("timezone").textContent = data.location.timezone;
+        document.getElementById("timezone").textContent = "UTC " + data.location.timezone;
         document.getElementById("isp").textContent = data.isp;
-        document.getElementById("location").textContent = `${data.location.country}, ${data.location.region}`;
+        document.getElementById("location").textContent = `${data.location.city}, ${data.location.region}, ${data.location.country}`;
     }
 
 
