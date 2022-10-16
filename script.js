@@ -1,52 +1,53 @@
-let latitude
-let longitude
-
 let map
 let marker
 
 window.onload = function () {
 
+    // to put user IP on map on initial page load
     axios.get("https://api.ipify.org?format=json")
         .then(response => getAddressByIP(response.data.ip))
         .catch(error => {
+
             getAddressByDomain('google.com')
+            throw new Error(error.message)
         })
 
 
 
 
-    document.querySelector('button').addEventListener('click', () => {
+    document.getElementById('search-button').addEventListener('click', () => {
+
         const inputValue = document.querySelector('input').value
 
-        const dotCounter = Array.from(inputValue).reduce((acc, caractere) => caractere === '.' ? ++acc : acc, 0)
+        //if the input value has at least one letter, then it is a domain name
+        const inputIncludesLetter = Array.from('abcdefghijklmnopqrstuvwxyz').some(caractere => inputValue.toLowerCase().includes(caractere))
 
-        dotCounter === 3 ? getAddressByIP(inputValue) : getAddressByDomain(inputValue)
-
+        inputIncludesLetter ? getAddressByDomain(inputValue) : getAddressByIP(inputValue)
     })
 
 
-    function setMapLocalization(lat, long) {
+    function putLocationOnMap(latitude, longitude) {
 
+        //verification needed to update the map according to the new input information
         if (map) {
 
             map = map.off()
             map = map.remove();
         }
 
+        //creates the map
+        map = L.map('map').setView([latitude, longitude], 13);
 
-        //create the map
-        map = L.map('map').setView([lat, long], 13);
 
-
-        //add a tile layer to add to our map
+        //add a tile layer to add to the map
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map)
 
 
-        //create the marker and putting at the coordinates
-        marker = L.marker([lat, long]).addTo(map);
+        //creates the marker and places it at the given coordinates
+        marker = L.marker([latitude, longitude]).addTo(map);
     }
 
 
@@ -56,11 +57,10 @@ window.onload = function () {
             const response = await axios.get(requestURL)
 
             setResponseInDom(response.data)
-            getCoordinates(response.data.location.lat, response.data.location.lng)
-            setMapLocalization(latitude, longitude)
+            putLocationOnMap(response.data.location.lat, response.data.location.lng)
 
         } catch (error) {
-            
+
             alert('Verify the IP address')
             throw new Error(error.message)
         }
@@ -72,11 +72,9 @@ window.onload = function () {
 
             const requestURL = 'https://geo.ipify.org/api/v2/country,city?apiKey=at_FhrMhVxJMxdo7yIMs1ibHFG7aZp9n&domain=' + domain
             const response = await axios.get(requestURL)
-            console.log(response.data)
 
             setResponseInDom(response.data)
-            getCoordinates(response.data.location.lat, response.data.location.lng)
-            setMapLocalization(latitude, longitude)
+            putLocationOnMap(response.data.location.lat, response.data.location.lng)
 
         } catch (error) {
 
@@ -92,26 +90,6 @@ window.onload = function () {
         document.getElementById("isp").textContent = data.isp;
         document.getElementById("location").textContent = `${data.location.country}, ${data.location.region}`;
     }
-
-
-    function getCoordinates(lat, long) {
-        latitude = lat
-        longitude = long
-    }
-
-
-
-
-
-
-
-
-
-
-    // =====================================MAP CONFIGS
-
-
-
 
 
 }

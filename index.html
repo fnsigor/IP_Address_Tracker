@@ -21,38 +21,40 @@
 </head>
 
 <body>
-    <div class="absolute-container">
+
+    <div class="form-div">
         <h1>IP Address Tracker</h1>
 
         <form>
-            <input type="text" placeholder="Search for any IP address or domain" min="5">
-            <button type="button"></button>
+            <input type="text" placeholder="Search for any IP or domain" min="5">
+            <button type="button" id="search-button"></button>
         </form>
-
-        <ul class="infos-div">
-            <li class="infos-block">
-                <h6 class="info-title">IP ADDRESS</h6>
-                <address class="api-result" id="ip">&nbsp;</address>
-            </li>
-
-            <li class="infos-block">
-                <h6 class="info-title">LOCATION</h6>
-                <address class="api-result" id="location">&nbsp;</address>
-            </li>
-
-            <li class="infos-block">
-                <h6 class="info-title">TIMEZONE</h6>
-                <address class="api-result" id="timezone">&nbsp;</address>
-            </li>
-
-            <li class="infos-block">
-                <h6 class="info-title">ISP</h6>
-                <address class="api-result" id="isp">&nbsp;</address>
-            </li>
-        </ul>
     </div>
 
-    <div id="map" Style="width: 100%; height: 70vh; margin: 0 auto;"></div>
+    <ul class="infos-div">
+        <li class="infos-block">
+            <h6 class="info-title">IP ADDRESS</h6>
+            <address class="api-result" id="ip">&nbsp;</address>
+        </li>
+
+        <li class="infos-block">
+            <h6 class="info-title">LOCATION</h6>
+            <address class="api-result" id="location">&nbsp;</address>
+        </li>
+
+        <li class="infos-block">
+            <h6 class="info-title">TIMEZONE</h6>
+            <address class="api-result" id="timezone">&nbsp;</address>
+        </li>
+
+        <li class="infos-block">
+            <h6 class="info-title">ISP</h6>
+            <address class="api-result" id="isp">&nbsp;</address>
+        </li>
+    </ul>
+
+
+    <div id="map"></div>
 
 
 </body>

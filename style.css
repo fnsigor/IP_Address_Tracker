@@ -1,8 +1,3 @@
-/* 
-- Mobile: 375px
-- Desktop: 1440px */
-
-
 * {
     margin: 0;
     padding: 0;
@@ -10,6 +5,7 @@
     list-style: none;
     font-style: normal;
 }
+
 
 :root {
     font-size: 62.5%;
@@ -25,22 +21,29 @@ body {
     background: linear-gradient(45deg, #443e99, #6186f2) no-repeat;
 
     min-height: 100vh;
-
-    padding-top: 30vh;
 }
 
+#map{
+    height: 70vh;
+    width: 100%; 
+    margin: 0 auto;
+}
 
-.absolute-container{
+.form-div{
+    padding-top: 1.5rem;
+    height: 30vh;
+}
+
+.infos-div{
     position: absolute;
     z-index: 999;
+    top: 19%;
     left: 50%;
     transform: translateX(-50%);
 
-    padding-top: 1.5rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
 
-    top: 0vh;
-    
-} 
 
 
 h1 {
@@ -48,13 +51,21 @@ h1 {
     font-weight: 500;
     font-size: 2.3;
     text-align: center;
-    
+
     margin-bottom: 1.5rem;
+}
+
+
+
+form {
+    margin-inline: auto;
+    display: flex;
+    justify-content: center;
 }
 
 input {
     color: var(--Very-Dark-Gray);
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     line-height: 2rem;
     outline: none;
 
@@ -63,8 +74,9 @@ input {
     border-top-left-radius: .5rem;
 
     padding: .8rem;
-    min-width: 2.4rem;
-    width: 30rem;
+    min-width: 23rem;
+    width: 50vw;
+    max-width: 35rem;
 }
 
 
@@ -102,39 +114,117 @@ button::before {
 }
 
 
-form {
-    margin-inline: auto;
-    display: flex;
-    justify-content: center;
-
-    margin-bottom: 2rem;
-}
-
-.infos-div{
+.infos-div {
     background-color: #FFF;
 
-    border-radius: .5rem;  
+    border-radius: .5rem;
 
     width: 80%;
     margin-inline: auto;
 
 }
 
-.infos-block{
+.infos-block {
     text-align: center;
-    padding-block: 1rem;
+    padding-block: .5rem;
 }
 
-.info-title{
-    margin-bottom: .3rem;
- 
-    font-size: 1.4rem;
+.info-title {
+    margin-bottom: .5rem;
+
+    font-size: 1.3rem;
     color: var(--Dark-Gray);
 }
 
-.api-result{
+.api-result {
     color: var(--Very-Dark-Gray);
     font-weight: 400;
-    font-size: 1.9rem;
+    font-size: 1.6rem;
 }
 
+
+
+
+
+/*===============RESPONSIVE - DESKTOP=================*/
+
+@media (min-width: 600px) {
+
+    #map{
+        height: 80vh;
+    }
+
+    .form-div{
+        height: 25vh;
+    }
+
+    .infos-div{
+        top: 19%;
+    }
+
+
+    h1 {
+        font-size: 2.3;
+
+        margin-bottom: 2rem;
+    }
+
+    input {
+        font-size: 1.8rem;
+    }
+
+    .infos-div {
+        display: flex;
+        justify-content: space-between;
+
+        width: initial;
+        margin-inline: auto;
+
+        padding: 2rem;
+    }
+
+    .infos-block {
+        text-align: start;
+        padding-block: 0;
+
+        position: relative;
+
+        padding: .5rem;
+
+        width: 16rem;
+        padding-inline: 1rem 2rem;
+    }
+
+    .infos-block:not(.infos-div li:first-child)::after {
+        content: '';
+        position: absolute;
+        top: 0%;
+        left: -1rem;
+
+        width: 2px;
+        height: 100%;
+        background-color: var(--Dark-Gray);
+    }
+
+    .info-title {
+        margin-bottom: 0;
+
+        text-align: start;
+        font-size: 1.3rem;
+    }
+
+    .api-result {
+        font-size: 1.8rem;
+    }
+
+}
+
+
+@media (min-width: 1000px) {
+    
+
+    #map{
+        height: 75vh;
+    }
+
+}
