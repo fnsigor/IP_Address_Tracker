@@ -15,17 +15,16 @@ window.onload = function () {
 
 
 
-
-    document.getElementById('search-button').addEventListener('click', () => {
-
+    function search(){
         const inputValue = document.querySelector('input').value
 
-        //if the input value has at least one letter, then it is a domain name
         const inputIncludesLetter = Array.from('abcdefghijklmnopqrstuvwxyz').some(caractere => inputValue.toLowerCase().includes(caractere))
 
-        inputIncludesLetter ? getAddressByDomain(inputValue) : getAddressByIP(inputValue)
-    })
+                                //to check if its an IPV6
+        inputIncludesLetter && !(inputValue.includes(':')) ? getAddressByDomain(inputValue) : getAddressByIP(inputValue)
 
+        document.querySelector('input').value = ''
+    }
 
     function putLocationOnMap(latitude, longitude, location = 'default') {
 
@@ -94,5 +93,13 @@ window.onload = function () {
         document.getElementById("location").textContent = `${data.location.city}, ${data.location.region}, ${data.location.country}`;
     }
 
+
+    document.querySelector('input').addEventListener('keypress', evt =>{
+        if(evt.key === 'Enter'){
+            evt.preventDefault()
+            search()
+        }
+    }) 
+    document.getElementById('search-button').addEventListener('click', search)
 
 }

@@ -115,6 +115,10 @@ button::before {
     clip-path: polygon(53% 0, 75% 50%, 53% 100%, 33% 100%, 55% 50%, 33% 0);
 }
 
+button:hover{
+    cursor: pointer;
+}
+
 
 .infos-div {
     background-color: #FFF;
@@ -143,6 +147,10 @@ button::before {
     color: var(--Very-Dark-Gray);
     font-weight: 400;
     font-size: 1.6rem;
+}
+
+#ip{
+    word-break: break-all;
 }
 
 img.leaflet-marker-icon{
